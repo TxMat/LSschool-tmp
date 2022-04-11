@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FelicitationActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FELICITATION !!"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/exercice5_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choisir une autre table"
+        android:onClick="exercice5Changer"/>
+
+    <Button
+        android:id="@+id/exercice5_autreExo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choisir un autre exerice"
+        android:onClick="exercice5Quitter"/>
+
+</LinearLayout>

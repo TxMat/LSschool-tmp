@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.berneteprojetandroid">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BerneteProjetAndroid">
+        <activity
+            android:name=".ComptesAdapter"
+            android:exported="true" />
+        <activity
+            android:name=".CreationCompteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ResultatAdditionsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ErreurActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FelicitationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChoixTableActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TableMultiplicationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdditionsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CultureGeneraleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MathematiquesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ListeExercicesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ConnexionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
