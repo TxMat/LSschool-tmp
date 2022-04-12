@@ -17,6 +17,7 @@ public class CreationCompteActivity extends AppCompatActivity {
     private BD BDD;
 
     private EditText etName;
+    private EditText etPrenom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class CreationCompteActivity extends AppCompatActivity {
         Button sumbit = findViewById(R.id.AddUserButton);
 
         etName = findViewById(R.id.editTextTextPersonName);
+        etPrenom = findViewById(R.id.editTextTextPersonPrenom);
 
         sumbit.setOnClickListener(v -> saveUser());
 
@@ -37,6 +39,7 @@ public class CreationCompteActivity extends AppCompatActivity {
 
         // Récupérer les informations contenues dans les vues
         final String sName = etName.getText().toString().trim();
+        final String sPrenom = etPrenom.getText().toString().trim();
 
         // Vérifier les informations fournies par l'utilisateur
         if (sName.isEmpty()) {
@@ -50,23 +53,15 @@ public class CreationCompteActivity extends AppCompatActivity {
             @Override
             protected Comptes doInBackground(Void... voids) {
 
-                return new Comptes();
-/*
-                // creating a usr
-                User usr = new User();
-                usr.setName(sName);
+                Comptes cmpt = new Comptes();
+                cmpt.setName(sName);
+                cmpt.setPrenom(sPrenom);
 
-                UserDao tmp = db.userDao();
+                long id = BD.getInstance(getApplicationContext()).cdDao().insert(cmpt);
 
-                // adding to database
-                long id = db.userDao().insert(usr);
+                cmpt.setId(id);
 
-                // mettre à jour l'id de la tache
-                // Nécessaire si on souhaite avoir accès à l'id plus tard dans l'activité
-                usr.setId(id);
-
-
-                return usr;*/
+                return cmpt;
             }
 
             @Override

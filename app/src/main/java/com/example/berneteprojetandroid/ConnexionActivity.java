@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.example.berneteprojetandroid.bdd.BD;
 import com.example.berneteprojetandroid.bdd.Comptes;
@@ -23,14 +25,19 @@ public class ConnexionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
-        // On récupère l'instance de la BDD
-        BD dbClient = BD.getInstance(getApplicationContext());
-
         // On récupère le RecyclerView du layout.
         RecyclerView rvEleves = (RecyclerView) findViewById(R.id.rvComptes);
         adapter = new ComptesAdapter(cmpt, this);
         rvEleves.setAdapter(adapter);
         rvEleves.setLayoutManager(new LinearLayoutManager(this));
+
+        Button creer = findViewById(R.id.button2);
+
+        creer.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CreationCompteActivity.class);
+            startActivity(intent);
+
+        });
 
     }
 

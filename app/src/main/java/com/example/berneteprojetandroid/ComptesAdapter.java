@@ -67,7 +67,7 @@ public class ComptesAdapter extends RecyclerView.Adapter<ComptesAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.rvComptes);
+            tv = itemView.findViewById(R.id.tvItem);
         }
     }
 }
