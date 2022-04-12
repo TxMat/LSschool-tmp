@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -25,23 +26,23 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     ArrayList<Questionnaire> listeQuestions;
     int nb_quest = 0;
     int nbJuste;
+    int id_juste;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_culture_generale);
 
-        valider.setOnClickListener (view -> {
-            if (radioGroup.getCheckedRadioButtonId() == id_juste) {
-                nbJuste++;
-            }
+        Button valider = findViewById(R.id.cultGvalider);
 
-            if (addition.getCalcul() != -1){
-                if (addition.resultatJuste()) {
+        valider.setOnClickListener (view -> {
+
+            if (radioGroup.getCheckedRadioButtonId() != -1){
+                if (radioGroup.getCheckedRadioButtonId() == id_juste) {
                     nbJuste++;
                 }
-                if (nb_op != 10) {
-                    addition();
+                if (nb_quest != 10) {
+                    question();
                 } else {
                     Intent ResultatAdditionIntent = new Intent(this, ResultatAdditionsActivity.class);
                     ResultatAdditionIntent.putExtra(ResultatAdditionsActivity.NBJUSTE_KEY, String.valueOf(nbJuste));
@@ -49,7 +50,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                 }
 
             } else {
-                Toast.makeText(this,"Entrez un résultat", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Sélectionne une réponse !", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -60,6 +61,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     public void question() {
         TextView questionText = findViewById(R.id.question);
         ArrayList<Integer> aLreponse = new ArrayList<>(Arrays.asList(1,2,3,4));
+        id_juste = -1;
 
         int indiceQuestion = (int)(Math.random() * ((listeQuestions.size() - 0) + 1)) + 0;
         Questionnaire question = listeQuestions.get(indiceQuestion);
@@ -73,7 +75,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     bouton1.setText(reponses[i]);
                     aLreponse.remove(placeRep);
                     if (reponses[i] == question.getBonne_reponse()) {
-                        int id_juste = R.id.bouton1;
+                        id_juste = R.id.bouton1;
                     }
                     break;
                 case 2:
@@ -81,7 +83,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     bouton2.setText(reponses[i]);
                     aLreponse.remove(placeRep);
                     if (reponses[i] == question.getBonne_reponse()) {
-                        int id_juste = R.id.bouton2;
+                        id_juste = R.id.bouton2;
                     }
                     break;
                 case 3:
@@ -89,7 +91,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     bouton3.setText(reponses[i]);
                     aLreponse.remove(placeRep);
                     if (reponses[i] == question.getBonne_reponse()) {
-                        int id_juste = R.id.bouton3;
+                        id_juste = R.id.bouton3;
                     }
                     break;
                 case 4:
@@ -97,7 +99,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     bouton4.setText(reponses[i]);
                     aLreponse.remove(placeRep);
                     if (reponses[i] == question.getBonne_reponse()) {
-                        int id_juste = R.id.bouton4;
+                        id_juste = R.id.bouton4;
                     }
                     break;
             }
