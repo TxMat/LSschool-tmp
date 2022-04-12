@@ -15,7 +15,8 @@ import java.util.List;
 
 public class ConnexionActivity extends AppCompatActivity {
 
-
+    private ArrayList<Comptes> cmpt = new ArrayList<>();
+    private ComptesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class ConnexionActivity extends AppCompatActivity {
 
         // On récupère le RecyclerView du layout.
         RecyclerView rvEleves = (RecyclerView) findViewById(R.id.rvComptes);
-        ComptesAdapter adapter = new ComptesAdapter(new ArrayList<Comptes>());
+        adapter = new ComptesAdapter(cmpt, this);
         rvEleves.setAdapter(adapter);
         rvEleves.setLayoutManager(new LinearLayoutManager(this));
 
@@ -39,15 +40,14 @@ public class ConnexionActivity extends AppCompatActivity {
             @Override
             protected List<Comptes> doInBackground(Void... voids) {
                 // On récupère les élèves depuis la BDD
-                List<Comptes> listeEleves = BD.getInstance(getApplicationContext()).cdDao().getAll();
-                return listeEleves;
+                List<Comptes> lc = BD.getInstance(getApplicationContext()).cdDao().getAll();
+                return lc;
             }
 
             @Override
-            protected void onPostExecute(List<Comptes> eleves) {
-                // On affiche les élèves dans le RecyclerView
-                super.onPostExecute(eleves);
-                // adapter . qqch
+            protected void onPostExecute(List<Comptes> lc) {
+                super.onPostExecute(lc);
+                adapter.updateData(lc);
             }
 
         }

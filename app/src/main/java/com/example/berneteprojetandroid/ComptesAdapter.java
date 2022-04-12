@@ -17,66 +17,57 @@ import java.util.List;
 
 public class ComptesAdapter extends RecyclerView.Adapter<ComptesAdapter.ViewHolder> {
 
-    private ArrayList<Comptes> mData;
+    private List<Comptes> mData;
+    private final LayoutInflater mInflater;
 
-    public ComptesAdapter(ArrayList<Comptes> comptes) {
-        this.mData = comptes;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView nomEleveTextView;
-
-        public ViewHolder(View itemView){
-            super(itemView);
-        }
-    }
-
-    private List<Comptes> listeCompte;
-
-    public void EleveAdapter(List<Comptes> liste){
-        listeCompte = liste;
+    public ComptesAdapter(List<Comptes> mData, Context context) {
+        this.mInflater = LayoutInflater.from(context);
+        this.mData = mData;
     }
 
     // Usually involves inflating a layout from XML and returning the holder
+    @NonNull
     @Override
-    public ComptesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-
-        // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.account_row, parent, false);
-
-        // Return a new holder instance
-        return new ViewHolder(contactView);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.account_row, parent, false);
+        return new ViewHolder(view);
     }
-
-
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(ComptesAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         // Get the data model based on position
-        Comptes eleve = listeCompte.get(position);
+        Comptes cpt = mData.get(position);
+        holder.tv.setText(cpt.getPrenom() + cpt.getName());
 
         // Set item views based on your views and data model
-        TextView nomTextView = holder.nomEleveTextView;
 
-        nomTextView.setText(eleve.getName());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                intent.putExtra("eleve", eleve);
-                v.getContext().startActivity(intent);
-            }
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), ListeExercicesActivity.class);
+            intent.putExtra("COMPTE", cpt);
+            v.getContext().startActivity(intent);
         });
     }
 
 
     @Override
     public int getItemCount() {
-        return listeCompte.size();
+        return mData.size();
     }
 
+    public void updateData(List<Comptes> lc) {
+        mData = lc;
+        notifyDataSetChanged();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        final TextView tv;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tv = itemView.findViewById(R.id.rvComptes);
+        }
+    }
 }

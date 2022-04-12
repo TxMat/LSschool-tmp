@@ -13,6 +13,16 @@ public class Comptes implements Serializable {
 
     private String name;
 
+    private String prenom;
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
     public long getId() {
         return id;
     }
