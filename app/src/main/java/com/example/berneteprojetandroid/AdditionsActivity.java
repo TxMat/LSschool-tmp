@@ -58,10 +58,13 @@ public class AdditionsActivity extends AppCompatActivity {
     }
 
     public void addition() {
+        nb_op++;
+        TextView num = findViewById(R.id.numAddition);
+        num.setText("["+nb_op+"/10]");
         addition = new Additions();
         TextView operation = findViewById(R.id.texteAddition);
         operation.setText(addition.getOperande1() + " + " + addition.getOperande2() + " = ");
-        nb_op++;
+
 
     }
 

@@ -22,7 +22,7 @@ public class ResultatAdditionsActivity extends AppCompatActivity {
             TextView titre = findViewById(R.id.texteResultat);
             titre.setText("Dommage !");
             TextView phrase = findViewById(R.id.texteNbJustes);
-            phrase.setText("Vous avez eu " + (10-nbJustes) + " réponses fausses.");
+            phrase.setText("Tu as eu " + (10-nbJustes) + " réponses fausses.");
         }
     }
 

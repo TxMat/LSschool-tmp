@@ -10,21 +10,19 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FELICITATION !!"
+        android:text="@string/felicitation"
         android:gravity="center"/>
 
     <Button
-        android:id="@+id/exercice5_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choisir une autre table"
-        android:onClick="exercice5Changer"/>
+        android:text="@string/bouton_autre_table"
+        android:onClick="tableChanger"/>
 
     <Button
-        android:id="@+id/exercice5_autreExo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choisir un autre exerice"
-        android:onClick="exercice5Quitter"/>
+        android:text="@string/bouton_autreExo"
+        android:onClick="tableQuitter"/>
 
 </LinearLayout>

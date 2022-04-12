@@ -21,6 +21,8 @@ import java.util.List;
 
 public class CultureGeneraleActivity extends AppCompatActivity {
 
+    public static final String NOM_KEY = "nom_key";
+
     ArrayList<Questionnaire> listeQuestions;
     int nb_quest = 0;
     int nbJuste;
@@ -29,26 +31,21 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getQuestions();
         setContentView(R.layout.activity_culture_generale);
-
-
-
-
-
     }
 
-    public void question() {
+    public void question() { // pour afficher les questions et leurs réponses
         TextView questionText = findViewById(R.id.question);
         ArrayList<Integer> aLreponse = new ArrayList<>(Arrays.asList(1,2,3,4));
-        id_juste = -1;
+        id_juste = -1; //id pour le radio button
 
-        int indiceQuestion = (int)(Math.random() * ((listeQuestions.size()-1 - 0) + 1)) + 0;
+        int indiceQuestion = (int)(Math.random() * ((listeQuestions.size()-1 - 0) + 1)) + 0; // pas eu le temps de vérifier qu'une question a déjéété posée
         Questionnaire question = listeQuestions.get(indiceQuestion);
         questionText.setText(question.getQuestion());
         String[] reponses = question.getReponses_possibles();
         String bonneReponse = question.getBonne_reponse();
+
         for (int i = 0; i < 4; i++) {
             int placeRep = (int)(Math.random() * (((aLreponse.size()-1) - 0) + 1)) + 0;
             switch (aLreponse.get(placeRep)){
@@ -104,6 +101,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                 } else {
                     Intent ResultatCulturegIntent = new Intent(this, ResultatCulturegActivity.class);
                     ResultatCulturegIntent.putExtra(ResultatCulturegActivity.NBJUSTE_KEY, String.valueOf(nbJuste));
+                    ResultatCulturegIntent.putExtra(ResultatCulturegActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
                     startActivity(ResultatCulturegIntent);
                 }
 
@@ -115,8 +113,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     }
 
     private void getQuestions() {
-        ///////////////////////
-        // Classe asynchrone permettant de récupérer des taches et de mettre à jour le listView de l'activité
+        // Classe asynchrone
         class GetQuestions extends AsyncTask<Void, Void, List<Questionnaire>> {
 
             @Override
@@ -128,7 +125,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
             protected void onPostExecute(List<Questionnaire> qz) {
                 super.onPostExecute(qz);
                 listeQuestions = (ArrayList<Questionnaire>) qz;
-                initListener();
+                initListener(); //initialisation du listener et de la 1ere question
             }
         }
 

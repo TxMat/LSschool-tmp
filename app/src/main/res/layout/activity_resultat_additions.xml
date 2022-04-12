@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="Félicitations !"
+        android:text="@string/felicitation"
         android:id="@+id/texteResultat"/>
 
     <TextView
@@ -20,13 +20,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/texteNbJustes"
         android:gravity="center"
-        android:text="Vous avez eu toutes vos réponses de correctes"/>
+        android:text="@string/resultat_addition_texte"/>
 
     <Button
         android:id="@+id/additionChanger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Refaire une série ?"
+        android:text="@string/boutonRefaire"
         android:onClick="additionChanger"/>
 </LinearLayout>

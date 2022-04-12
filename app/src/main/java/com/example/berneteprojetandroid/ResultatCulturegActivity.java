@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class ResultatCulturegActivity extends AppCompatActivity {
 
     public static final String NBJUSTE_KEY = "nbJuste_key";
+    public static final String NOM_KEY = "nom_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,13 @@ public class ResultatCulturegActivity extends AppCompatActivity {
             TextView titre = findViewById(R.id.texteResultat);
             titre.setText("Dommage !");
             TextView phrase = findViewById(R.id.texteNbJustes);
-            phrase.setText("Vous avez eu " + (10-nbJustes) + " réponses fausses. Révise encore un peu !");
+            phrase.setText("Tu as eu " + (10-nbJustes) + " réponses fausses. Révise encore un peu !");
         }
     }
 
     public void cultureGChanger(View view) {
         Intent intent = new Intent(this, ListeExercicesActivity.class);
+        intent.putExtra(ListeExercicesActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

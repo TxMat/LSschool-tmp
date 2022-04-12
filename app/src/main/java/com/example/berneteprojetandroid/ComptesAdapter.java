@@ -25,7 +25,7 @@ public class ComptesAdapter extends RecyclerView.Adapter<ComptesAdapter.ViewHold
         this.mData = mData;
     }
 
-    // Usually involves inflating a layout from XML and returning the holder
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,20 +33,17 @@ public class ComptesAdapter extends RecyclerView.Adapter<ComptesAdapter.ViewHold
         return new ViewHolder(view);
     }
 
-    // Involves populating data into the item through holder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // Get the data model based on position
         Comptes cpt = mData.get(position);
-        holder.tv.setText(cpt.getPrenom() + cpt.getName());
+        holder.tv.setText(cpt.getPrenom() + " " + cpt.getName());
 
-        // Set item views based on your views and data model
 
 
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), ListeExercicesActivity.class);
-            intent.putExtra("COMPTE", cpt);
+            intent.putExtra(ListeExercicesActivity.NOM_KEY, cpt.getPrenom());
             v.getContext().startActivity(intent);
         });
     }

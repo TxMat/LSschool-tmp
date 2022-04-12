@@ -16,7 +16,7 @@ public class CreationCompteActivity extends AppCompatActivity {
 
     private BD BDD;
 
-    private EditText etName;
+    private EditText etNom;
     private EditText etPrenom;
 
     @Override
@@ -26,29 +26,29 @@ public class CreationCompteActivity extends AppCompatActivity {
 
         BDD = BD.getInstance(getApplicationContext());
 
-        Button sumbit = findViewById(R.id.AddUserButton);
+        Button creer = findViewById(R.id.creer_bouton);
 
-        etName = findViewById(R.id.editTextTextPersonName);
-        etPrenom = findViewById(R.id.editTextTextPersonPrenom);
+        etNom = findViewById(R.id.nomCompte);
+        etPrenom = findViewById(R.id.prenomCompte);
 
-        sumbit.setOnClickListener(v -> saveUser());
+        creer.setOnClickListener(v -> sauvCompte());
 
     }
 
-    private void saveUser() {
+    private void sauvCompte() {
 
         // Récupérer les informations contenues dans les vues
-        final String sName = etName.getText().toString().trim();
+        final String sName = etNom.getText().toString().trim();
         final String sPrenom = etPrenom.getText().toString().trim();
 
         // Vérifier les informations fournies par l'utilisateur
-        if (sName.isEmpty()) {
-            etName.setError("Entez un nom");
-            etName.requestFocus();
+        if (sPrenom.isEmpty()) {
+            etPrenom.setError("Entre ton prénom !");
+            etPrenom.requestFocus();
             return;
         }
 
-        class SaveUser extends AsyncTask<Void, Void, Comptes> {
+        class SauvCompte extends AsyncTask<Void, Void, Comptes> {
 
             @Override
             protected Comptes doInBackground(Void... voids) {
@@ -67,15 +67,13 @@ public class CreationCompteActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Comptes cp) {
                 super.onPostExecute(cp);
-
-                // Quand la tache est créée, on arrête l'activité AddTaskActivity (on l'enleve de la pile d'activités)
                 setResult(RESULT_OK);
                 finish();
-                Toast.makeText(getApplicationContext(), "Sauvgradé avec succes !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Ton compte est créé !", Toast.LENGTH_LONG).show();
             }
         }
 
-        SaveUser su = new SaveUser();
+        SauvCompte su = new SauvCompte();
         su.execute();
     }
 

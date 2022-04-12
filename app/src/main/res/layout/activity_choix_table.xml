@@ -10,7 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choix"
+        android:textSize="25sp"
+        android:text="@string/choix_table_texte"
         android:gravity="center"/>
 
     <NumberPicker
@@ -24,11 +25,10 @@
         android:layout_marginTop="8dp"/>
 
     <Button
-        android:id="@+id/exercice5_valider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="valider"
-        android:onClick="exercice5Valider"/>
+        android:text="@string/valider"
+        android:onClick="choixTableValider"/>
 
 </LinearLayout>

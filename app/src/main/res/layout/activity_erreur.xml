@@ -10,26 +10,26 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ERREUR(S) !!"
+        android:text="@string/erreurs"
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/exercice5_nbErr"
+        android:id="@+id/table_nbErr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"/>
 
     <Button
-        android:id="@+id/exercice5_correc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Corriger mes réponses" />
+        android:text="@string/mult_corriger_bouton"
+        android:onClick="tableRecommencer"/>
 
     <Button
-        android:id="@+id/exercice5_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choisir une autre table" />
+        android:text="@string/bouton_autre_table"
+        android:onClick="tableChanger"/>
 
 
 </LinearLayout>

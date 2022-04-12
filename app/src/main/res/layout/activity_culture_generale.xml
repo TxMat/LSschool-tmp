@@ -7,6 +7,8 @@
     tools:context=".CultureGeneraleActivity"
     android:orientation="vertical">
 
+    <!--Textes initialisés pour les tests sans questions-->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +51,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Valider"
-        android:layout_gravity="center"
-        android:onClick="quizzValider"/>
+        android:layout_gravity="center"/>
 
 </LinearLayout>

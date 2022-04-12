@@ -14,12 +14,13 @@ public class FelicitationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_felicitation);
     }
 
-    public void exercice5Changer(View view) {
-        setResult(RESULT_OK);
-        super.finish();
+    public void tableChanger(View view) {
+        Intent intent = new Intent(this, ChoixTableActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
-    public void exercice5Quitter(View view) {
+    public void tableQuitter(View view) {
         Intent intent = new Intent(this, ListeExercicesActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

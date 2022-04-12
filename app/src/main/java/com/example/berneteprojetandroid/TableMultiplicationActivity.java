@@ -17,10 +17,6 @@ import java.util.ArrayList;
 public class TableMultiplicationActivity extends AppCompatActivity {
 
     public static final String TABLE_KEY = "table_key";
-    public final static int FEL_REQUEST = 1;
-    public final static int ERR_REQUEST = 2;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +27,7 @@ public class TableMultiplicationActivity extends AppCompatActivity {
         ArrayList<EditText> reponses;
         TableDeMultiplication tableMultiplication;
         LinearLayout linear;
-        Button valider = findViewById(R.id.exercice5_valider);
+        Button valider = findViewById(R.id.valider_calcul);
 
         table = getIntent().getIntExtra(TABLE_KEY,1);
         //Générer la table
@@ -50,6 +46,7 @@ public class TableMultiplicationActivity extends AppCompatActivity {
 
             //EditText
             EditText resultat = linearTMP.findViewById(R.id.template_resultat);
+            resultat.setTextSize(15);
             reponses.add(resultat);
 
             //Ajout au layout principal
@@ -82,17 +79,5 @@ public class TableMultiplicationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -15,19 +15,12 @@ public class MathematiquesActivity extends AppCompatActivity {
     }
 
     public void onTableDeMultiplications(View view) {
-        // Création d'une intention
         Intent ChoixTableActivityIntent = new Intent(this, ChoixTableActivity.class);
-
-        // Lancement de la demande de changement d'activité
         startActivity(ChoixTableActivityIntent);
     }
 
     public void onAdditions(View view) {
-
-        // Création d'une intention
         Intent AdditionsActivityIntent = new Intent(this, AdditionsActivity.class);
-
-        // Lancement de la demande de changement d'activité
         startActivity(AdditionsActivityIntent);
     }
 }

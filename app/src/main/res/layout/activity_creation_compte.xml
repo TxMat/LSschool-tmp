@@ -10,30 +10,29 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Créer compte"
+        android:text="@string/creation_text"
+        android:textSize="25sp"
         android:gravity="center" />
 
     <EditText
-        android:id="@+id/editTextTextPersonPrenom"
+        android:id="@+id/prenomCompte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Prénom"
-        android:imeOptions="actionDone"
-        android:inputType="textPersonName"/>
+        android:imeOptions="actionDone"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/nomCompte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nom"
-        android:imeOptions="actionDone"
-        android:inputType="textPersonName"/>
+        android:imeOptions="actionDone"/>
 
     <Button
-        android:id="@+id/AddUserButton"
+        android:id="@+id/creer_bouton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Créer" />
+        android:text="@string/creer_bouton" />
 
 </LinearLayout>

@@ -31,7 +31,7 @@ public class ConnexionActivity extends AppCompatActivity {
         rvEleves.setAdapter(adapter);
         rvEleves.setLayoutManager(new LinearLayoutManager(this));
 
-        Button creer = findViewById(R.id.button2);
+        Button creer = findViewById(R.id.bouton_nvcompte);
 
         creer.setOnClickListener(v -> {
             Intent intent = new Intent(this, CreationCompteActivity.class);
@@ -46,7 +46,6 @@ public class ConnexionActivity extends AppCompatActivity {
         class GetEleves extends AsyncTask<Void, Void, List<Comptes>> {
             @Override
             protected List<Comptes> doInBackground(Void... voids) {
-                // On récupère les élèves depuis la BDD
                 List<Comptes> lc = BD.getInstance(getApplicationContext()).cdDao().getAll();
                 return lc;
             }
@@ -65,7 +64,6 @@ public class ConnexionActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         // Mise à jour des élèves
         getEleves();
 

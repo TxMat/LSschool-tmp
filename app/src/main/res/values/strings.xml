@@ -9,4 +9,18 @@
     <string name="main_texte">Choisis un moyen de jouer</string>
     <string name="main_titre">Bienvenue sur l\'École des Loustics !</string>
     <string name="liste_texte">Choisis un type d\'exercice pour t\'entraîner</string>
+    <string name="connexion_texte">Sélectionne ton nom ou crée ton profil !</string>
+    <string name="connexion_creer_bouton">Nouveau compte</string>
+    <string name="creation_text">Créer ton compte !</string>
+    <string name="creer_bouton">Créer</string>
+    <string name="valider">Valider</string>
+    <string name="erreurs">ERREUR(S) !!</string>
+    <string name="felicitation">Félicitations !!</string>
+    <string name="bouton_autre_table">Choisir une autre table</string>
+    <string name="bouton_autreExo">Choisir un autre exerice</string>
+    <string name="choix_table_texte">Choisis ta table de multiplication !</string>
+    <string name="resultat_culture_texte">Tu as eu toutes tes réponses de correctes. Tu as bien révisé !</string>
+    <string name="boutonRefaire">Refaire une série ?</string>
+    <string name="resultat_addition_texte">Tu as eu toutes tes réponses de correctes</string>
+    <string name="mult_corriger_bouton">Corriger mes réponses</string>
 </resources>

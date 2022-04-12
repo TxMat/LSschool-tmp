@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class ListeExercicesActivity extends AppCompatActivity {
 
@@ -16,6 +17,8 @@ public class ListeExercicesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_liste_exercices);
 
         String nom = getIntent().getStringExtra(NOM_KEY);
+        TextView entete = findViewById(R.id.listeBonjour);
+        entete.setText("Bonjour " + nom + " !");
 
     }
 
@@ -26,6 +29,7 @@ public class ListeExercicesActivity extends AppCompatActivity {
 
     public void onExoCultureG(View view) {
         Intent ExoCultureGActivityIntent = new Intent(this, CultureGeneraleActivity.class);
+        ExoCultureGActivityIntent.putExtra(ListeExercicesActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
         startActivity(ExoCultureGActivityIntent);
     }
 }
