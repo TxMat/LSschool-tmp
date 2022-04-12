@@ -7,6 +7,20 @@
     tools:context=".ListeExercicesActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:id="@+id/listeBonjour"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/liste_texte"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

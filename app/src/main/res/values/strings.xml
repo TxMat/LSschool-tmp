@@ -8,4 +8,5 @@
     <string name="dix_additions">Liste d\'additions</string>
     <string name="main_texte">Choisis un moyen de jouer</string>
     <string name="main_titre">Bienvenue sur l\'École des Loustics !</string>
+    <string name="liste_texte">Choisis un type d\'exercice pour t\'entraîner</string>
 </resources>

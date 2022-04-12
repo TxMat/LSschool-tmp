@@ -14,21 +14,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onConnexion(View view) {
-
-        // Création d'une intention
+    public void onConnexion(View view) { //aller à la vue connexion
         Intent ConnexionActivityIntent = new Intent(this, ConnexionActivity.class);
-
-        // Lancement de la demande de changement d'activité
         startActivity(ConnexionActivityIntent);
     }
 
-    public void onListeExercices(View view) {
-
-        // Création d'une intention
+    public void onListeExercices(View view) { //aller directement aux exercices
         Intent ListeExercicesActivityIntent = new Intent(this, ListeExercicesActivity.class);
-
-        // Lancement de la demande de changement d'activité
+        ListeExercicesActivityIntent.putExtra(ListeExercicesActivity.NOM_KEY, "élève");
         startActivity(ListeExercicesActivityIntent);
     }
 
