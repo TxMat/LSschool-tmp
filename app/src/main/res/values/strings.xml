@@ -3,7 +3,7 @@
     <string name="main_connexion">Se connecter</string>
     <string name="main_anonyme">Jouer anonymement</string>
     <string name="maths">Exercices de mathématiques</string>
-    <string name="cultureG">Exercices de culture générale</string>
+    <string name="cultureG">Exercice de culture générale</string>
     <string name="table_multiplications">Tables de Multiplications</string>
     <string name="dix_additions">Liste d\'additions</string>
     <string name="main_texte">Choisis un moyen de jouer</string>
