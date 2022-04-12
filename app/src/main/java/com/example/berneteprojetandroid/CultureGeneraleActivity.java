@@ -21,8 +21,6 @@ import java.util.List;
 
 public class CultureGeneraleActivity extends AppCompatActivity {
 
-    RadioGroup radioGroup = findViewById(R.id.radioGroup);
-
     ArrayList<Questionnaire> listeQuestions;
     int nb_quest = 0;
     int nbJuste;
@@ -31,7 +29,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Button valider = findViewById(R.id.cultGvalider);
+
         getQuestions();
         setContentView(R.layout.activity_culture_generale);
 
@@ -46,10 +44,11 @@ public class CultureGeneraleActivity extends AppCompatActivity {
         ArrayList<Integer> aLreponse = new ArrayList<>(Arrays.asList(1,2,3,4));
         id_juste = -1;
 
-        int indiceQuestion = (int)(Math.random() * ((listeQuestions.size() - 0) + 1)) + 0;
+        int indiceQuestion = (int)(Math.random() * ((listeQuestions.size()-1 - 0) + 1)) + 0;
         Questionnaire question = listeQuestions.get(indiceQuestion);
         questionText.setText(question.getQuestion());
         String[] reponses = question.getReponses_possibles();
+        String bonneReponse = question.getBonne_reponse();
         for (int i = 0; i < 4; i++) {
             int placeRep = (int)(Math.random() * (((aLreponse.size()-1) - 0) + 1)) + 0;
             switch (aLreponse.get(placeRep)){
@@ -57,7 +56,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     RadioButton bouton1 = findViewById(R.id.bouton1);
                     bouton1.setText(reponses[i]);
                     aLreponse.remove(placeRep);
-                    if (reponses[i] == question.getBonne_reponse()) {
+                    if (reponses[i].equals(bonneReponse)) {
                         id_juste = R.id.bouton1;
                     }
                     break;
@@ -65,7 +64,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     RadioButton bouton2 = findViewById(R.id.bouton2);
                     bouton2.setText(reponses[i]);
                     aLreponse.remove(placeRep);
-                    if (reponses[i] == question.getBonne_reponse()) {
+                    if (reponses[i].equals(bonneReponse)) {
                         id_juste = R.id.bouton2;
                     }
                     break;
@@ -73,7 +72,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     RadioButton bouton3 = findViewById(R.id.bouton3);
                     bouton3.setText(reponses[i]);
                     aLreponse.remove(placeRep);
-                    if (reponses[i] == question.getBonne_reponse()) {
+                    if (reponses[i].equals(bonneReponse)) {
                         id_juste = R.id.bouton3;
                     }
                     break;
@@ -81,13 +80,38 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                     RadioButton bouton4 = findViewById(R.id.bouton4);
                     bouton4.setText(reponses[i]);
                     aLreponse.remove(placeRep);
-                    if (reponses[i] == question.getBonne_reponse()) {
+                    if (reponses[i].equals(bonneReponse)) {
                         id_juste = R.id.bouton4;
                     }
                     break;
             }
         }
         nb_quest++;
+    }
+
+    private void initListener(){
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
+        Button valider = findViewById(R.id.cultGvalider);
+        valider.setOnClickListener (view -> {
+
+            if (radioGroup.getCheckedRadioButtonId() != -1){
+                if (radioGroup.getCheckedRadioButtonId() == id_juste) {
+                    nbJuste++;
+                }
+                if (nb_quest != 10) {
+                    radioGroup.clearCheck();
+                    question();
+                } else {
+                    Intent ResultatCulturegIntent = new Intent(this, ResultatCulturegActivity.class);
+                    ResultatCulturegIntent.putExtra(ResultatCulturegActivity.NBJUSTE_KEY, String.valueOf(nbJuste));
+                    startActivity(ResultatCulturegIntent);
+                }
+
+            } else {
+                Toast.makeText(this,"Sélectionne une réponse !", Toast.LENGTH_SHORT).show();
+            }
+        });
+        question();
     }
 
     private void getQuestions() {
@@ -104,26 +128,7 @@ public class CultureGeneraleActivity extends AppCompatActivity {
             protected void onPostExecute(List<Questionnaire> qz) {
                 super.onPostExecute(qz);
                 listeQuestions = (ArrayList<Questionnaire>) qz;
-
-                valider.setOnClickListener (view -> {
-
-                    if (radioGroup.getCheckedRadioButtonId() != -1){
-                        if (radioGroup.getCheckedRadioButtonId() == id_juste) {
-                            nbJuste++;
-                        }
-                        if (nb_quest != 10) {
-                            question();
-                        } else {
-                            Intent ResultatAdditionIntent = new Intent(this, ResultatAdditionsActivity.class);
-                            ResultatAdditionIntent.putExtra(ResultatAdditionsActivity.NBJUSTE_KEY, String.valueOf(nbJuste));
-                            startActivity(ResultatAdditionIntent);
-                        }
-
-                    } else {
-                        Toast.makeText(this,"Sélectionne une réponse !", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                question();
+                initListener();
             }
         }
 
