@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CultureGeneraleActivity">
+    tools:context=".CultureGeneraleActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Question"
+        android:id="@+id/question"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:id="@+id/bouton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reponse 1"/>
+
+        <RadioButton
+            android:id="@+id/bouton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reponse 2"/>
+
+        <RadioButton
+            android:id="@+id/bouton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reponse3"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/cultGvalider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:layout_gravity="center"
+        android:onClick="quizzValider"/>
+
+</LinearLayout>
