@@ -20,7 +20,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Objects;
 
 @Database(entities = {Comptes.class, Questionnaire.class}, version = 1, exportSchema = false)
@@ -55,7 +54,7 @@ public abstract class BD extends RoomDatabase {
     }
 
     private static void fillWithStartingData(Context context) {
-        QuestionnaireDAO quizDao = getInstance(context).quizDao();
+        QuestionnaireDAO QuestDAO = getInstance(context).questDao();
         JSONArray jsonArray = loadJSONArray(context);
 
         try {
@@ -70,15 +69,13 @@ public abstract class BD extends RoomDatabase {
                         .replace("]", "")
                         .replace("\"", "");
                 String[] choices = prop.split(",");
-                System.out.println(Arrays.toString(choices));
 
                 Questionnaire qs = new Questionnaire();
                 qs.setQuestion(question);
                 qs.setBonne_reponse(answer);
                 qs.setReponses_possibles(choices);
-                System.out.println(qs);
 
-                quizDao.insert(qs);
+                QuestDAO.insert(qs);
 
 
             }
@@ -101,7 +98,7 @@ public abstract class BD extends RoomDatabase {
             }
 
             JSONObject jsonObject = new JSONObject(sb.toString());
-            return jsonObject.getJSONArray("quizz");
+            return jsonObject.getJSONArray("culture");
 
         } catch (JSONException | IOException e) {
             e.printStackTrace();
@@ -109,11 +106,11 @@ public abstract class BD extends RoomDatabase {
         return null;
     }
 
-    public abstract QuestionnaireDAO quizDao();
+    public abstract QuestionnaireDAO questDao();
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private PopulateDbAsyncTask(BD db) {
-            QuestionnaireDAO quizDao = db.quizDao();
+            QuestionnaireDAO quizDao = db.questDao();
         }
 
         @Override
