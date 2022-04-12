@@ -44,7 +44,7 @@ public class ComptesAdapter extends RecyclerView.Adapter<ComptesAdapter.ViewHold
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.eleve_item, parent, false);
+        View contactView = inflater.inflate(R.layout.account_row, parent, false);
 
         // Return a new holder instance
         return new ViewHolder(contactView);
