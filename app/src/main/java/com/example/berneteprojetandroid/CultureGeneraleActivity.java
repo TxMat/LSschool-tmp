@@ -31,30 +31,13 @@ public class CultureGeneraleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Button valider = findViewById(R.id.cultGvalider);
+        getQuestions();
         setContentView(R.layout.activity_culture_generale);
 
-        Button valider = findViewById(R.id.cultGvalider);
-
-        valider.setOnClickListener (view -> {
-
-            if (radioGroup.getCheckedRadioButtonId() != -1){
-                if (radioGroup.getCheckedRadioButtonId() == id_juste) {
-                    nbJuste++;
-                }
-                if (nb_quest != 10) {
-                    question();
-                } else {
-                    Intent ResultatAdditionIntent = new Intent(this, ResultatAdditionsActivity.class);
-                    ResultatAdditionIntent.putExtra(ResultatAdditionsActivity.NBJUSTE_KEY, String.valueOf(nbJuste));
-                    startActivity(ResultatAdditionIntent);
-                }
-
-            } else {
-                Toast.makeText(this,"Sélectionne une réponse !", Toast.LENGTH_SHORT).show();
-            }
 
 
-        });
+
 
     }
 
@@ -122,11 +105,25 @@ public class CultureGeneraleActivity extends AppCompatActivity {
                 super.onPostExecute(qz);
                 listeQuestions = (ArrayList<Questionnaire>) qz;
 
-                // le code pour quand question list est ok va la
+                valider.setOnClickListener (view -> {
 
-                //int questionnb = getIntent().getIntExtra("numberOfQuestions", 10);
-                //quizModel = new QuizModel(questionnb, questionList);
-                //initialize();
+                    if (radioGroup.getCheckedRadioButtonId() != -1){
+                        if (radioGroup.getCheckedRadioButtonId() == id_juste) {
+                            nbJuste++;
+                        }
+                        if (nb_quest != 10) {
+                            question();
+                        } else {
+                            Intent ResultatAdditionIntent = new Intent(this, ResultatAdditionsActivity.class);
+                            ResultatAdditionIntent.putExtra(ResultatAdditionsActivity.NBJUSTE_KEY, String.valueOf(nbJuste));
+                            startActivity(ResultatAdditionIntent);
+                        }
+
+                    } else {
+                        Toast.makeText(this,"Sélectionne une réponse !", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                question();
             }
         }
 
