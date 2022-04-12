@@ -3,10 +3,12 @@ package com.example.berneteprojetandroid.bdd;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.berneteprojetandroid.R;
 
@@ -27,6 +29,14 @@ public abstract class BD extends RoomDatabase {
 
     public abstract ComptesDAO cdDao();
 
+    private static final RoomDatabase.Callback clbck = new RoomDatabase.Callback(){
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase bd){
+            super.onCreate(bd);
+            new PopulateDbAsyncTask(INSTANCE).execute();
+        }
+    };
+
     private static BD INSTANCE;
 
     public static Context context;
@@ -38,6 +48,7 @@ public abstract class BD extends RoomDatabase {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context,
                     BD.class, "LSDb")
+                    .addCallback(clbck)
                     .build();
         }
         return INSTANCE;
