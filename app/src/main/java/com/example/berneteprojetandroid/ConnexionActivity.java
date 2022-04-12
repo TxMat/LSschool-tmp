@@ -20,13 +20,13 @@ public class ConnexionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_connexion);
 
         // On récupère l'instance de la BDD
         BD dbClient = BD.getInstance(getApplicationContext());
 
         // On récupère le RecyclerView du layout.
-        RecyclerView rvEleves = (RecyclerView) findViewById(R.id.listeElevesView);
+        RecyclerView rvEleves = (RecyclerView) findViewById(R.id.rvComptes);
         ComptesAdapter adapter = new ComptesAdapter(new ArrayList<Comptes>());
         rvEleves.setAdapter(adapter);
         rvEleves.setLayoutManager(new LinearLayoutManager(this));

@@ -28,7 +28,6 @@ public class ComptesAdapter extends RecyclerView.Adapter<ComptesAdapter.ViewHold
 
         public ViewHolder(View itemView){
             super(itemView);
-            nomEleveTextView = itemView.findViewById(R.id.eleveViewName);
         }
     }
 

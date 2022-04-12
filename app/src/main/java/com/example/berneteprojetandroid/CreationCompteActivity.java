@@ -2,9 +2,14 @@ package com.example.berneteprojetandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.berneteprojetandroid.bdd.BD;
+import com.example.berneteprojetandroid.bdd.Comptes;
 
 
 public class CreationCompteActivity extends AppCompatActivity {
@@ -43,9 +48,11 @@ public class CreationCompteActivity extends AppCompatActivity {
         class SaveUser extends AsyncTask<Void, Void, Comptes> {
 
             @Override
-            protected User doInBackground(Void... voids) {
+            protected Comptes doInBackground(Void... voids) {
 
-                // creating a task
+                return new Comptes();
+/*
+                // creating a usr
                 User usr = new User();
                 usr.setName(sName);
 
@@ -59,12 +66,12 @@ public class CreationCompteActivity extends AppCompatActivity {
                 usr.setId(id);
 
 
-                return usr;
+                return usr;*/
             }
 
             @Override
-            protected void onPostExecute(User usr) {
-                super.onPostExecute(usr);
+            protected void onPostExecute(Comptes cp) {
+                super.onPostExecute(cp);
 
                 // Quand la tache est créée, on arrête l'activité AddTaskActivity (on l'enleve de la pile d'activités)
                 setResult(RESULT_OK);
